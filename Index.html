@@ -1,0 +1,142 @@
+><!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AethereonAI</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0b1020;
+color:white;
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+header{
+padding:20px;
+font-size:28px;
+font-weight:bold;
+background:#151c2f;
+border-bottom:1px solid #2b3552;
+text-align:center;
+}
+
+#chat{
+flex:1;
+overflow-y:auto;
+padding:20px;
+}
+
+.msg{
+background:#1d2742;
+padding:12px;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+.user{
+background:#3b82f6;
+}
+
+footer{
+display:flex;
+padding:15px;
+background:#151c2f;
+}
+
+input{
+flex:1;
+padding:15px;
+border:none;
+border-radius:12px;
+outline:none;
+font-size:16px;
+}
+
+button{
+margin-left:10px;
+padding:15px 20px;
+border:none;
+border-radius:12px;
+background:#7c3aed;
+color:white;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>AethereonAI</header>
+
+<div id="chat">
+<div class="msg">
+👋 Hola, soy <b>AethereonAI</b>. ¿En qué puedo ayudarte?
+</div>
+</div>
+
+<footer>
+<input id="mensaje" placeholder="Escribe un mensaje...">
+<button onclick="enviar()">Enviar</button>
+</footer>
+
+<script>
+
+function enviar(){
+
+let input=document.getElementById("mensaje");
+let texto=input.value.trim();
+
+if(texto=="") return;
+
+let chat=document.getElementById("chat");
+
+chat.innerHTML+=`
+<div class="msg user">
+<b>Tú:</b> ${texto}
+</div>
+`;
+
+let respuesta="Todavía estoy aprendiendo.";
+
+let t=texto.toLowerCase();
+
+if(t.includes("hola"))
+respuesta="¡Hola! 👋 Encantado de conocerte.";
+
+else if(t.includes("quien eres"))
+respuesta="Soy AethereonAI, una inteligencia artificial creada por Ethan.";
+
+else if(t.includes("adios"))
+respuesta="¡Hasta pronto!";
+
+else if(t.includes("como estas"))
+respuesta="Estoy funcionando perfectamente. 🚀";
+
+chat.innerHTML+=`
+<div class="msg">
+<b>AethereonAI:</b> ${respuesta}
+</div>
+`;
+
+input.value="";
+chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
